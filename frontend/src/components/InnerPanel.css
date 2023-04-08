@@ -1,0 +1,11 @@
+.innerpanel{
+    background: linear-gradient(165.69deg, #247C7C 20.45%, #FFFFFF 20.46%, #FFFFFF 86.59%, #247C7C 86.6%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 21px;
+}

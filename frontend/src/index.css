@@ -1,0 +1,18 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+form > button ,.designbutton{
+  background: #247C7C;
+  border: 3px solid #041616;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  padding: 3px 10px;
+  color: white;
+  cursor:pointer;
+}

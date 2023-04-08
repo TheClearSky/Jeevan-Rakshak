@@ -1,0 +1,10 @@
+.App{
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap:46px;
+    overflow-x: hidden;
+}

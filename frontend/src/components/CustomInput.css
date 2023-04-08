@@ -1,0 +1,27 @@
+.formele{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+}
+.formele label{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+}
+.formele input[type="text"],.formele input[type="password"]
+{
+    border: 3px solid #041616;
+    border-radius: 4px; 
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    min-width: 300px;
+    max-width: 400px;
+    text-indent: 5px;
+}
+.formele input[type="text"]:focus,.formele [type="password"]:focus {
+    background-color: rgb(218, 219, 219);
+}
