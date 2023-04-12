@@ -17,3 +17,9 @@
 .usericon{
     width: 100px;
 }
+
+@media screen and (max-width: 600px) {
+    .rightpanel{
+        border: 0px;
+    }
+}

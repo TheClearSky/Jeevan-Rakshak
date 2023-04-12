@@ -23,5 +23,16 @@
     text-indent: 5px;
 }
 .formele input[type="text"]:focus,.formele [type="password"]:focus {
-    background-color: rgb(218, 219, 219);
+    /* background-color: rgb(218, 219, 219); */
+    animation: animateBg 60s linear infinite;
+    /* background-image: linear-gradient(90deg,#b5b5b5,#757575,#b5b5b5,#757575); */
+    background-image:  repeating-linear-gradient(45deg,#e7e7e7, #e7e7e7 40px, #c8c8c8 40px, #c8c8c8 60px);
+    background-size: 300% 100%;
 }
+
+
+  @keyframes animateBg {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+  }
+  

@@ -4,7 +4,7 @@ import UserIcon from "./../../assets/UserIcon.png"
 import CustomInput from "../CustomInput";
 
 
-export default function()
+export default function({setPage:p_setPage})
 {
     const [formData,setFormData]=useState({
         email:"",
@@ -23,6 +23,8 @@ export default function()
     {
         e.preventDefault();
         console.log(formData);
+        // p_setPage("UserDetails");
+        p_setPage("LoggedIn");
     }
     return (
     <form method="post" onSubmit={handleSubmit} className="rightpanel">

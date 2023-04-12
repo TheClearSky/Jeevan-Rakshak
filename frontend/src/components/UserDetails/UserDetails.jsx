@@ -7,7 +7,7 @@ import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 
-export default function()
+export default function({setPage:p_setPage})
 {
     const [formData,setFormData]=useState({
         email:"",
@@ -41,6 +41,7 @@ export default function()
     {
         e.preventDefault();
         console.log(formData);
+        p_setPage("UserRegistered");
     }
     return <>
         <InnerPanel>

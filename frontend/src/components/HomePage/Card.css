@@ -1,6 +1,6 @@
 .card{
-    width: 220px;
-    height: 280px;
+    width: 250px;
+    height: 300px;
     
     background: linear-gradient(128.78deg, #247C7C 3.75%, #EFEFEF 3.76%);
     box-shadow: 7px 8px 4px rgba(36, 124, 124, 0.38);
@@ -12,10 +12,56 @@
     align-items: flex-start;
     padding: 18px 20px;
     gap: 35px;
+    overflow: hidden;
+    transition: scale 0.3s ease-out;
+    scale:1;
 }
-.cardname{
+.card:not(.enlarge):hover{
+    /* transform: scale(1.05); */
+    scale:1.05;
+    box-shadow: 7px 8px 20px rgba(36, 124, 124, 0.38);
+    background: linear-gradient(128.78deg, #247C7C 3.75%, #f3f3f3 3.76%);
+}
+.card.enlarge{
+    width: 100%;
+    height: auto;
+}
+.cardname,.descriptiontitle{
+    position: relative;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 20px;
+    min-height: 25px;
+    display:inline-block;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+.descriptiontitle{
+    display: none;
+}
+.descriptionbody{
+    display: none;
+}
+.enlarge .descriptiontitle{
+    display: block;
+}
+.enlarge .descriptionbody{
+    display: block;
+}
+
+.cardname:hover {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    word-break: break-all;
+}
+.outerbody{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 0px 18px;
+    gap: 18px;
 }
 .cardbody{
     display: flex;
@@ -24,21 +70,41 @@
     padding: 0px 0px 18px;
     gap: 18px;
 }
-.cardsubheading , .bars > div{
+.enlarge .cardbody{
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.cardsubheading , .bars > div, .descriptionbody {
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     color: #4E4E4E;
 }
+.enlarge .cardsubheading , .enlarge .bars{
+    /* white-space: nowrap; */
+    max-width: 500px;
+    min-width: 200px;
+}
 .bars{
-    width:100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 10px;
 }
+
+
 .bar1,.bar2{
-    width: 100%;
+    /* width: 100%; */
+    min-width: 200px;
+    max-width:225px;
     height: 15px;
+}
+.cardbutton{
+    display: none;
+}
+.enlarge .cardbutton{
+    display: block;
 }

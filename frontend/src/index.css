@@ -16,3 +16,8 @@ form > button ,.designbutton{
   color: white;
   cursor:pointer;
 }
+
+form > button.smallbutton ,.designbutton.smallbutton{
+  font-size: 17px;
+  padding: 2px 8px;
+}

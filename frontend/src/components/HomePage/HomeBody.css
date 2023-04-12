@@ -12,6 +12,9 @@
     padding: 0px;
     gap: 10px;
 }
+.search.hide{
+    display: none;
+}
 .filter{
     width: 35px;
     height: 28px;
@@ -21,9 +24,9 @@
 .cards{
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
-    padding: 32px 50px;
+    padding: 32px calc( 3vw - 15px );
     gap: 50px;
     flex-wrap: wrap;
 }
