@@ -7,41 +7,35 @@ import DatePicker from 'react-date-picker';
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 
-export default function({setPage:p_setPage})
+import { auth } from "../../firebase-config";
+import { createUserWithEmailAndPassword,signOut,signInWithEmailAndPassword } from "firebase/auth";
+import "./../ErrorText.css";
+
+export default function({setPage:p_setPage,formData:p_formData,handleChange:p_handleChange})
 {
-    const [formData,setFormData]=useState({
-        email:"",
-        age:null,
-        placeholder:""
-    });
-    function handleChange(e)
-    {
-        
-        let name,value;
-        if(e instanceof Date && !isNaN(e))
-        {
-            name="age";
-            value=e;
-        }
-        else if(e===null)
-        {
-            name="age";
-            value=null;
-        }
-        else
-        {
-            ({name,value}=e.target);
-        }
-        setFormData((prevFormData)=>({
-            ...prevFormData,
-            [name]:value
-        }))
-    }
-    function handleSubmit(e)
+
+    let [errorText,setErrorText]=useState("");
+
+    async function handleSubmit(e)
     {
         e.preventDefault();
-        console.log(formData);
-        p_setPage("UserRegistered");
+        try{
+            const user= await createUserWithEmailAndPassword(auth,p_formData.email,p_formData.password);
+            p_setPage("UserRegistered");
+        }
+        catch(error)
+        {
+            switch(error.code)
+            {
+                case 'auth/email-already-in-use':
+                    setErrorText("");
+                    p_setPage("LoginPage");
+                    break;
+                default:
+                    setErrorText(error.code.substring(5).replaceAll('-',' '));
+            }
+        }
+        
     }
     return <>
         <InnerPanel>
@@ -53,12 +47,14 @@ export default function({setPage:p_setPage})
                 <div className="userdetailsheading">
                     We want you to fill some basic details
                 </div>
-                <CustomInput label="Email:" name="email" type="text" value={formData.email} handlechange={handleChange} />
+                {(errorText=="")?"":<div className="errortext">{errorText}</div>}
+                <CustomInput label="Email:" name="email" type="text" value={p_formData.email} handlechange={p_handleChange} />
+                <CustomInput label="Password:" name="password" type="password" value={p_formData.password} handlechange={p_handleChange} />
                 <div className="formagediv">
                     <div className="formage">Age:</div>
-                    <DatePicker className="datepicker" onChange={handleChange} value={formData.age} />
+                    <DatePicker className="datepicker" onChange={p_handleChange} value={p_formData.age} />
                 </div>
-                <CustomInput label="Placeholder:" name="placeholder" type="text" value={formData.placeholder} handlechange={handleChange} />
+                <CustomInput label="Placeholder:" name="placeholder" type="text" value={p_formData.placeholder} handlechange={p_handleChange} />
                 <button name="age" type="submit">Next</button>
             </form>
         </InnerPanel>

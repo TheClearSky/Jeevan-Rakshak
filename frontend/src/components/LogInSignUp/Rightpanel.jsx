@@ -2,29 +2,48 @@ import "./Rightpanel.css";
 import {useState } from 'react';
 import UserIcon from "./../../assets/UserIcon.png"
 import CustomInput from "../CustomInput";
+import { auth } from "../../firebase-config";
+import {signOut,signInWithEmailAndPassword } from "firebase/auth";
+import "./../ErrorText.css";
 
-
-export default function({setPage:p_setPage})
+export default function({setPage:p_setPage,setAutoChangeLoginPage:p_setAutoChangeLoginPage,formData:p_formData,handleChange:p_handleChange})
 {
-    const [formData,setFormData]=useState({
-        email:"",
-        password:""
-    });
-    function handleChange(e)
-    {
-        // console.log(e);
-        const {name,value}=e.target;
-        setFormData((prevFormData)=>({
-            ...prevFormData,
-            [name]:value
-        }))
+    
+    let [errorText,setErrorText]=useState("");
+    
+
+    const logout = async () => {
+        try{
+            await signOut(auth);
+        }
+        catch(error)
+        {
+            console.log(error);
+            
+        }
     }
-    function handleSubmit(e)
+    // logout();
+    async function handleSubmit(e)
     {
         e.preventDefault();
-        console.log(formData);
-        // p_setPage("UserDetails");
-        p_setPage("LoggedIn");
+        p_setAutoChangeLoginPage(false);
+        try{
+            const user=await signInWithEmailAndPassword(auth,p_formData.email,p_formData.password);
+            p_setPage("LoggedIn");
+        }
+        catch(error)
+        {
+            switch(error.code)
+            {
+                case 'auth/user-not-found':
+                    setErrorText("");
+                    p_setPage("UserDetails");
+                    break;
+                default:
+                    setErrorText(error.code.substring(5).replaceAll('-',' '));
+            }
+        }
+        
     }
     return (
     <form method="post" onSubmit={handleSubmit} className="rightpanel">
@@ -32,8 +51,9 @@ export default function({setPage:p_setPage})
         <div className="rightpanelheading">
             Sign Up/Log In
         </div>
-            <CustomInput label="Email:" name="email" type="text" value={formData.email} handlechange={handleChange} />
-            <CustomInput label="Password:" name="password" type="password" value={formData.password} handlechange={handleChange} />
+            {(errorText=="")?"":<div className="errortext">{errorText}</div>}
+            <CustomInput label="Email:" name="email" type="text" value={p_formData.email} handlechange={p_handleChange} />
+            <CustomInput label="Password:" name="password" type="password" value={p_formData.password} handlechange={p_handleChange} />
         <button type="submit">Sign Up/Log In</button>
     </form>
     )

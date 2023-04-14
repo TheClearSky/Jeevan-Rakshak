@@ -1,0 +1,9 @@
+.errortext{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    background-color: #f5e0e0;
+    border: 3px solid #fa7272;
+    border-radius: 4px;
+    padding: 2px;
+}
