@@ -1,13 +1,13 @@
 import "./CustomInput.css";
 import {useId} from 'react';
 
-export default function({label:p_label,name:p_name,type:p_type,value:p_value,handlechange:p_handlechange})
+export default function({label:p_label,name:p_name,type:p_type,value:p_value,handlechange:p_handlechange,style:p_style})
 {
     const ID=useId();
     return (
     <div className="formele">
         <label htmlFor={ID}>{p_label}</label>
-        <input id={ID} name={p_name} type={p_type} value={p_value} onChange={p_handlechange} />
+        <input id={ID} name={p_name} type={p_type} value={p_value} onChange={p_handlechange} style={p_style}/>
     </div>
     )
 }

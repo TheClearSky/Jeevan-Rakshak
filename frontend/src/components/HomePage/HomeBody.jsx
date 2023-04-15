@@ -111,7 +111,7 @@ export default function () {
         <div className="homebody">
             <div className={"search "+ ((clickedCard==null)?"":"hide")}>
                 <div className="searchboxandfilter">
-                    <CustomInput label="Search:" name="search" type="text" value={searchString} handlechange={handleChange} />
+                    <CustomInput label="Search:" name="search" type="text" value={searchString} handlechange={handleChange} style={{minWidth:"100px",width:"400px"}} />
                 </div>
                 <img src={FilterButton} onClick={toggleFilters} className="filterbutton"></img>
             </div>
