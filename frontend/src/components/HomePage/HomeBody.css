@@ -15,12 +15,119 @@
 .search.hide{
     display: none;
 }
-.filter{
+.filterbutton{
     width: 35px;
     height: 28px;
     align-self: flex-end;
     margin-bottom: 10px;
 }
+.filter{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 31px 28px;
+    gap: 22px;
+
+    /* min-width: 613px; remove later */
+    /* min-height: 313px; remove later */
+
+    background: #EFEFEF;
+    border: 4px solid #041616;
+    border-radius: 7px;
+}
+.filtertitle{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+}
+.filter .slider{
+    width: 557px;
+    height: 49px;
+    /* background-color: #041616; */
+}
+.filter .agefields{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 64px;
+    gap: 10px;
+
+    width: 557px;
+    height: 48px;
+}
+.filter .agefields .agefield{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 11px;
+
+    width: 172px;
+    height: 28px;
+
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+}
+.filter .agefields .agefield input{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3px 10px;
+
+    width: 68px;
+    height: 28px;
+
+    border: 2px solid #041616;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.filter .dropdowncontainer{
+    align-self: center;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 27px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.filter .dropdown{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+
+    border: 3px solid #041616;
+
+}
+.filter .dropdowncurrent{
+    padding: 1px 30px 1px 5px;
+}
+.filter .is-open .dropdowncurrent{
+    min-width: 200px;
+}
+
 .cards{
     display: flex;
     flex-direction: row;

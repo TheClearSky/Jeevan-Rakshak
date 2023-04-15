@@ -8,6 +8,8 @@ import HomePage from './HomePage/HomePage';
 import { auth } from "./../firebase-config";
 import {onAuthStateChanged} from "firebase/auth";
 
+import { readUserData } from "./../usermanagement.js";
+
 function App() {
 
   let [userInfo,setUserInfo]=useState({
@@ -17,7 +19,14 @@ function App() {
 
   let [autoChangeLoginPage,setAutoChangeLoginPage]=useState(true);
 
-  useEffect(()=>onAuthStateChanged(auth,(currenUser)=>{
+  useEffect(()=>onAuthStateChanged(auth,async (currenUser)=>{
+    // console.log(currenUser);
+      if(currenUser!==null)
+      {
+        let data = await readUserData(currenUser);
+        // console.log(currenUser,data);
+        currenUser={...currenUser,...data};
+      }
       setUserInfo(()=>{
         return {
           loggedIn:(currenUser!==null),
@@ -32,8 +41,8 @@ function App() {
   const [formData,setFormData]=useState({
       email:"",
       password:"",
-      age:null,
-      placeholder:""
+      dob:null,
+      name:""
   });
 
   function handleChange(e)
@@ -42,12 +51,12 @@ function App() {
       let name,value;
       if(e instanceof Date && !isNaN(e))
       {
-          name="age";
+          name="dob";
           value=e;
       }
       else if(e===null)
       {
-          name="age";
+          name="dob";
           value=null;
       }
       else
@@ -93,7 +102,7 @@ function App() {
   }
   else if(page==="HomePage")
   {
-    pagetodisplay=<HomePage setPage={setPage}/>
+    pagetodisplay=<HomePage setPage={setPage} userInfo={userInfo}/>
   }
   return (
     <div className="App">

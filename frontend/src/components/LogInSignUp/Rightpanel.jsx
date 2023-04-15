@@ -6,6 +6,7 @@ import { auth } from "../../firebase-config";
 import {signOut,signInWithEmailAndPassword } from "firebase/auth";
 import "./../ErrorText.css";
 
+
 export default function({setPage:p_setPage,setAutoChangeLoginPage:p_setAutoChangeLoginPage,formData:p_formData,handleChange:p_handleChange})
 {
     
@@ -29,6 +30,7 @@ export default function({setPage:p_setPage,setAutoChangeLoginPage:p_setAutoChang
         p_setAutoChangeLoginPage(false);
         try{
             const user=await signInWithEmailAndPassword(auth,p_formData.email,p_formData.password);
+            
             p_setPage("LoggedIn");
         }
         catch(error)

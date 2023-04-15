@@ -8,8 +8,10 @@ import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 
 import { auth } from "../../firebase-config";
-import { createUserWithEmailAndPassword,signOut,signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import "./../ErrorText.css";
+
+import { writeUserData } from "./../../usermanagement.js";
 
 export default function({setPage:p_setPage,formData:p_formData,handleChange:p_handleChange})
 {
@@ -21,6 +23,8 @@ export default function({setPage:p_setPage,formData:p_formData,handleChange:p_ha
         e.preventDefault();
         try{
             const user= await createUserWithEmailAndPassword(auth,p_formData.email,p_formData.password);
+            // console.log(user,p_formData);
+            writeUserData(user.user,p_formData.name,p_formData.dob);
             p_setPage("UserRegistered");
         }
         catch(error)
@@ -50,12 +54,13 @@ export default function({setPage:p_setPage,formData:p_formData,handleChange:p_ha
                 {(errorText=="")?"":<div className="errortext">{errorText}</div>}
                 <CustomInput label="Email:" name="email" type="text" value={p_formData.email} handlechange={p_handleChange} />
                 <CustomInput label="Password:" name="password" type="password" value={p_formData.password} handlechange={p_handleChange} />
-                <div className="formagediv">
-                    <div className="formage">Age:</div>
-                    <DatePicker className="datepicker" onChange={p_handleChange} value={p_formData.age} />
+                <CustomInput label="Name:" name="name" type="text" value={p_formData.name} handlechange={p_handleChange} />
+                
+                <div className="formdobdiv">
+                    <div className="formdob">Date of birth:</div>
+                    <DatePicker className="datepicker" onChange={p_handleChange} value={p_formData.dob} />
                 </div>
-                <CustomInput label="Placeholder:" name="placeholder" type="text" value={p_formData.placeholder} handlechange={p_handleChange} />
-                <button name="age" type="submit">Next</button>
+                <button type="submit">Next</button>
             </form>
         </InnerPanel>
         
