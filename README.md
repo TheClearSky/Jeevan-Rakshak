@@ -78,6 +78,14 @@ We are solving this by building a Mobile App and a website to connect the benefi
 </ul>
 
 # Glimpses of our Prototype:-
+## Web:-
+![alt](images/1.jpg)
+![alt](images/2.jpg)
+![alt](images/3.jpg)
+![alt](images/4.jpg)
+
+## App:-
+
 
 # Upcoming Features:-
 <ul>
