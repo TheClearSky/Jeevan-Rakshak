@@ -99,19 +99,19 @@ export default function () {
     {
         cardcomponents=cardstodisplay.map((card,index)=>
         {
-            return <Card key={card.id} name={card.name} diseasebenefits={card.disease} forgroup={card.incomegroup} minage={card.minage} maxage={card.maxage} description={card.body} linkToApply={card.link} enlarge={false} setClickedCard={setClickedCard} index={index}/>
+            return <Card key={card.id} name={card.name} diseasebenefits={card.disease} forgroup={card.incomegroup} minage={card.minage} maxage={card.maxage} description={card.body} linkToApply={card.link} contact={card.contact} enlarge={false} setClickedCard={setClickedCard} index={index}/>
         });
     }
     else
     {
         let card=cardstodisplay[clickedCard];
-        cardcomponents=<Card key={card.id} name={card.name} diseasebenefits={card.disease} forgroup={card.incomegroup} minage={card.minage} maxage={card.maxage} description={card.body} linkToApply={card.link} enlarge={true} setClickedCard={setClickedCard}/>
+        cardcomponents=<Card key={card.id} name={card.name} diseasebenefits={card.disease} forgroup={card.incomegroup} minage={card.minage} maxage={card.maxage} description={card.body} linkToApply={card.link} contact={card.contact} enlarge={true} setClickedCard={setClickedCard}/>
     }
     return <>
         <div className="homebody">
             <div className={"search "+ ((clickedCard==null)?"":"hide")}>
                 <div className="searchboxandfilter">
-                    <CustomInput label="Search:" name="search" type="text" value={searchString} handlechange={handleChange} style={{minWidth:"100px",width:"400px"}} />
+                    <CustomInput label="Search:" name="search" type="text" value={searchString} handlechange={handleChange} style={{minWidth:"100px",width:"300px",maxWidth:"500px"}} />
                 </div>
                 <img src={FilterButton} onClick={toggleFilters} className="filterbutton"></img>
             </div>

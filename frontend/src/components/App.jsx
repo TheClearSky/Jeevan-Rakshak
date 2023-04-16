@@ -36,7 +36,16 @@ function App() {
   }),[])
 
   
+
+  
   let [page,setPage]=useState("LoginPage");
+
+  useEffect(()=>{
+    if(page=="HomePage")
+    {
+      setAutoChangeLoginPage(true);
+    }
+  },[page]);
 
   const [formData,setFormData]=useState({
       email:"",

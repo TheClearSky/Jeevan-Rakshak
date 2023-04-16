@@ -1,6 +1,6 @@
 import "./Card.css"
 
-export default function({name:p_name,diseasebenefits:p_disease_benefits,forgroup:p_forgroup,minage:p_minage,maxage:p_maxage,description:p_description,linkToApply:p_linkToApply,enlarge:p_enlarge,setClickedCard:p_setClickedCard,index:p_index})
+export default function({name:p_name,diseasebenefits:p_disease_benefits,forgroup:p_forgroup,minage:p_minage,maxage:p_maxage,description:p_description,linkToApply:p_linkToApply,contact:p_contact,enlarge:p_enlarge,setClickedCard:p_setClickedCard,index:p_index})
 {
     let nolowerlimitofage=false;
     let noupperlimitofage=false;
@@ -78,12 +78,19 @@ export default function({name:p_name,diseasebenefits:p_disease_benefits,forgroup
                         
                     </div>
                 </div>
+                
             </div>
             <div className="descriptiontitle">
                 Description
             </div>
             <div className="descriptionbody">
                 {p_description}
+            </div>
+            <div className="descriptiontitle">
+                Contact Helpline
+            </div>
+            <div className="descriptionbody">
+                {p_contact}
             </div>
             <button className="cardbutton designbutton smallbutton" onClick={()=>window.open(p_linkToApply,'_blank')} >Link To Apply</button>
         </div>

@@ -3,7 +3,7 @@ import {useState } from 'react';
 import UserIcon from "./../../assets/UserIcon.png"
 import CustomInput from "../CustomInput";
 import { auth } from "../../firebase-config";
-import {signOut,signInWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword } from "firebase/auth";
 import "./../ErrorText.css";
 
 
@@ -13,17 +13,7 @@ export default function({setPage:p_setPage,setAutoChangeLoginPage:p_setAutoChang
     let [errorText,setErrorText]=useState("");
     
 
-    const logout = async () => {
-        try{
-            await signOut(auth);
-        }
-        catch(error)
-        {
-            console.log(error);
-            
-        }
-    }
-    // logout();
+    
     async function handleSubmit(e)
     {
         e.preventDefault();
