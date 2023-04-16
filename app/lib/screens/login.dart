@@ -55,11 +55,12 @@ class _LoginState extends State<Login> {
         .then((value) async {
       if (value == true) {
         // QuerySnapshot snapshot =
-        // await DatabaseService(FirebaseAuth.instance.currentUser!.uid)
-        //     .gettingUserData(emailController.text.toString());
+        //     await DatabaseService(FirebaseAuth.instance.currentUser!.uid)
+        //         .gettingUserData();
+        // print(snapshot);
         await HelperFunctions.saveUserLoggedInStatus(true);
         await HelperFunctions.saveUserEmailSF(emailController.text.toString());
-        // await HelperFunctions.saveUserNameSF(snapshot.docs[0]['fullName']);
+        // await HelperFunctions.saveUserNameSF("");
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: ((context) => HomePage())));
       } else {
