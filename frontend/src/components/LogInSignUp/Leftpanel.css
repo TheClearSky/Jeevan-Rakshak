@@ -1,12 +1,14 @@
 .leftpanel{
     flex-grow: 1;
     
-    background: linear-gradient(165.69deg, #247C7C 20.45%, #041616 20.46%, #041616 79.67%, #247C7C 79.68%);
+    background: linear-gradient(165.69deg, #287e88 20.45%, #041616 20.46%, #041616 79.67%, #287e88 79.68%);
     border: 4px solid #0E1745;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    width: 20%;
 }
 .leftpanel-logo{
     width: 50%;

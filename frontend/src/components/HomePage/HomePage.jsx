@@ -1,6 +1,6 @@
 import "./HomePage.css"
 import NavBar from "./NavBar.jsx";
-import HomeBody from "./HomeBody.jsx"
+import HomeBody from "./HomeBody.jsx";
 export default function({userInfo:p_userInfo})
 {
     return <div className="homepage">

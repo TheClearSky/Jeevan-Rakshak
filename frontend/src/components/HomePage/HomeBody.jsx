@@ -155,7 +155,7 @@ export default function () {
         
 
         <div className="cards">
-            {cardcomponents}
+            {(cardcomponents.length==0)?"No scheme available":cardcomponents}
             
         </div>
     </>
