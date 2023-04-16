@@ -3,18 +3,21 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailsPage extends StatefulWidget {
   final String id;
   final String name;
   final String incomeGroup;
   final String desease;
+  final String link;
   int? minage;
   int? maxage;
   final String description;
+  final String number;
 
   DetailsPage(this.id, this.name, this.desease, this.incomeGroup, this.minage,
-      this.maxage, this.description);
+      this.maxage, this.description, this.link, this.number);
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -23,6 +26,7 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
+    final Uri _url = Uri.parse(widget.link);
     widget.minage = widget.minage == -1 ? 0 : widget.minage;
     widget.maxage = widget.maxage == -1 ? 100 : widget.maxage;
     String agegroup = (widget.minage == 0 && widget.maxage == 100)
@@ -179,13 +183,32 @@ class _DetailsPageState extends State<DetailsPage> {
                         SizedBox(
                           height: 10,
                         ),
+                        Text(
+                          'Contact Helpline',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          widget.number,
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         ElevatedButton(
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                 Color(0xFF247C7C),
                               ),
                             ),
-                            onPressed: null,
+                            onPressed: () async {
+                              if (!await launchUrl(_url)) {
+                                throw Exception('Could not launch $_url');
+                              }
+                            },
                             child: const Text(
                               "Link To Apply",
                               style: TextStyle(
