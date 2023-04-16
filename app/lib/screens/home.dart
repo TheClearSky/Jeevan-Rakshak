@@ -5,9 +5,11 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_hospitality_app/alldetails.dart';
 import 'package:flutter_hospitality_app/screens/dropdown.dart';
+import 'package:flutter_hospitality_app/screens/faq.dart';
 import 'package:flutter_hospitality_app/screens/login.dart';
 import 'package:flutter_hospitality_app/services/auth_service.dart';
 import 'package:flutter_hospitality_app/widgets/carddetails.dart';
+import 'package:flutter_hospitality_app/widgets/helper_function.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
@@ -20,6 +22,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String userName = "";
   AuthService authService = AuthService();
   @override
   void initState() {
@@ -127,6 +130,19 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // gettingUserData() async {
+  //   // await HelperFunctions.getUserEmailSF().then((value) {
+  //   //   setState(() {
+  //   //     emai = value.toString();
+  //   //   });
+  //   // });
+  //   await HelperFunctions.getUserNameSF().then((value) {
+  //     setState(() {
+  //       userName = value.toString();
+  //     });
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     var minagecontroller = TextEditingController();
@@ -138,9 +154,15 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Container(
             padding: EdgeInsets.only(right: 15),
-            child: Icon(
-              Icons.question_answer,
-              size: 25,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FaqScreen()));
+              },
+              child: Icon(
+                Icons.question_answer,
+                size: 25,
+              ),
             ),
             alignment: Alignment.centerRight,
           ),
@@ -155,14 +177,14 @@ class _HomePageState extends State<HomePage> {
                 size: 150,
                 color: Colors.grey[700],
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                'username',
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
+              // SizedBox(
+              //   height: 15,
+              // ),
+              // Text(
+              //   userName,
+              //   textAlign: TextAlign.center,
+              //   style: const TextStyle(fontWeight: FontWeight.bold),
+              // ),
               SizedBox(
                 height: 30,
               ),
@@ -176,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                       builder: (context) {
                         return Dialog(
                           child: Container(
-                            height: 300,
+                            height: 350,
                             padding: EdgeInsets.all(10),
                             child: Column(
                               children: [
@@ -194,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                                   height: 10,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(15),
-                                      color: Colors.blue),
+                                      color: Color(0xFF247C7C)),
                                 ),
                                 SizedBox(
                                   height: 20,
@@ -259,6 +281,27 @@ class _HomePageState extends State<HomePage> {
                                 MyHomePage1(
                                   onClicked: (value) => statefunc(value),
                                 ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                        Color(0xFF247C7C),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text(
+                                      "Save",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        backgroundColor: Color(0xFF247C7C),
+                                      ),
+                                    )),
                               ],
                             ),
                           ),
@@ -267,7 +310,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                leading: const Icon(Icons.exit_to_app),
+                leading: const Icon(Icons.filter),
                 title: const Text(
                   'Filters',
                   style: TextStyle(color: Colors.black),
@@ -364,6 +407,8 @@ class _HomePageState extends State<HomePage> {
                               display_list[index].minage,
                               display_list[index].maxage,
                               display_list[index].body.toString(),
+                              display_list[index].link.toString(),
+                              display_list[index].contact.toString(),
                             ),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(

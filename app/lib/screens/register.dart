@@ -36,6 +36,7 @@ class _RegisterState extends State<Register> {
   final nameController = TextEditingController();
   final dateController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
   // bool _isLoading = false;
 
   AuthService authService = AuthService();
@@ -49,15 +50,16 @@ class _RegisterState extends State<Register> {
       //   });
       // }
       await authService
-          .registerUserWithEmailandPassword(
-              nameController.text.trim(), widget.email, widget.password)
+          .registerUserWithEmailandPassword(nameController.text.trim(),
+              dateController.text.trim(), widget.email, widget.password)
           .then((value) async {
         if (value == true) {
           await HelperFunctions.saveUserLoggedInStatus(true);
+
           print('value==true');
           await HelperFunctions.saveUserEmailSF(widget.email.toString());
           await HelperFunctions.saveUserNameSF(nameController.text.toString());
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: ((context) => Registered())));
         } else {
           showSnackbar(context, Colors.red, value);
@@ -116,6 +118,7 @@ class _RegisterState extends State<Register> {
                     //   style: TextStyle(color: Colors.black, fontSize: 15),
                     // ),
                     TextFormField(
+                      controller: nameController,
                       decoration: InputDecoration(
                         labelText: 'Name',
                         labelStyle: TextStyle(

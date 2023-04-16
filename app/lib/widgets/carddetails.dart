@@ -11,10 +11,12 @@ class CardDetails extends StatefulWidget {
   final String desease;
   int? minage;
   int? maxage;
+  final String link;
   final String description;
+  final String number;
 
   CardDetails(this.id, this.name, this.desease, this.incomeGroup, this.minage,
-      this.maxage, this.description);
+      this.maxage, this.description, this.link, this.number);
 
   @override
   State<CardDetails> createState() => _CardDetailsState();
@@ -56,13 +58,16 @@ class _CardDetailsState extends State<CardDetails> {
                   context,
                   MaterialPageRoute(
                       builder: ((context) => DetailsPage(
-                          widget.id,
-                          widget.name,
-                          widget.desease,
-                          widget.incomeGroup,
-                          widget.minage,
-                          widget.maxage,
-                          widget.description))));
+                            widget.id,
+                            widget.name,
+                            widget.desease,
+                            widget.incomeGroup,
+                            widget.minage,
+                            widget.maxage,
+                            widget.description,
+                            widget.link,
+                            widget.number,
+                          ))));
             },
             child: Card(
               elevation: 5,

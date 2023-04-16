@@ -1,6 +1,7 @@
 class DummyData {
   String? body;
   String? category;
+  int? contact;
   String? disease;
   int? id;
   String? incomegroup;
@@ -14,6 +15,7 @@ class DummyData {
   DummyData(
       {this.body,
       this.category,
+      this.contact,
       this.disease,
       this.id,
       this.incomegroup,
@@ -27,6 +29,7 @@ class DummyData {
   DummyData.fromJson(Map<String, dynamic> json) {
     body = json['body'];
     category = json['category'];
+    contact = json['contact'];
     disease = json['disease'];
     id = json['id'];
     incomegroup = json['incomegroup'];
@@ -42,6 +45,7 @@ class DummyData {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['body'] = this.body;
     data['category'] = this.category;
+    data['contact'] = this.contact;
     data['disease'] = this.disease;
     data['id'] = this.id;
     data['incomegroup'] = this.incomegroup;
