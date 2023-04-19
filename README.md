@@ -31,7 +31,7 @@ We are solving this by building a Mobile App and a website to connect the benefi
   </li>
   <br>
   <li>
-    For the mobile app we are using Flutter and Dart with Firebase
+    For both Android and iOS App we are using Flutter and Dart with Firebase
   </li>
 </ul>
 
