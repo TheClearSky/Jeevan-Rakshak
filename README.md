@@ -31,7 +31,7 @@ We are solving this by building a Mobile App and a website to connect the benefi
   </li>
   <br>
   <li>
-    For the mobile app we are using Flutter and Dart with Firebase
+    For both Android and iOS App we are using Flutter and Dart with Firebase
   </li>
 </ul>
 
@@ -93,7 +93,7 @@ We are solving this by building a Mobile App and a website to connect the benefi
 # Upcoming Features:-
 <ul>
   <li>
-    Once this system is in place, we would build a complete FAQ system along with pre-populated standard questions and answers, option to post new questions and an ever-growing list of previously answered questions so next time people can refer to that previous query.
+    Once this system is in place, we would build(already built without other endpoint) a complete FAQ system along with pre-populated standard questions and answers, option to post new questions and an ever-growing list of previously answered questions so next time people can refer to that previous query.
   </li>
   <br>
   <li>
